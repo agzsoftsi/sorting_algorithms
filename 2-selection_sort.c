@@ -8,26 +8,26 @@
  */
 void selection_sort(int *array, size_t size)
 {
-	unsigned int i, j;
-	int current_min, temp;
+	unsigned int con1, con2;
+	int curr_min, temp;
 
 	if (!array)
 		return;
 
-	for (i = 0; i < size - 1; i++)
+	for (con1 = 0; con1 < size - 1; con1++)
 	{
-		current_min = i;
-		for (j = i + 1; j < size; j++)
+		curr_min = con1;
+		for (con2 = con1 + 1; con2 < size; con2++)
 		{
-			if (array[j] < array[current_min])
-				current_min = j;
+			if (array[con2] < array[curr_min])
+				curr_min = con2;
 		}
 
-		if (array[i] != array[current_min])
+		if (array[con1] != array[curr_min])
 		{
-			temp = array[i];
-			array[i] = array[current_min];
-			array[current_min] = temp;
+			temp = array[con1];
+			array[con1] = array[curr_min];
+			array[curr_min] = temp;
 			print_array(array, size);
 		}
 	}
