@@ -5,51 +5,49 @@
  * ascending order using the Quick sort algorithm
  * @array: integer array
  * @size: size_t
- * Return: Nothing
  */
 void quick_sort(int *array, size_t size)
 {
-	int limit  = size - 1;
+	int limt  = size - 1;
 
 	if (size < 2)
 		return;
 
-	partition(array, size, 0, limit);
+	partition(array, size, 0, limt);
 }
 
 /**
  * partition - quick sort recursive
  * @arr: array
  * @size: size of array
- * @lower_limit: lower limit
- * @limit: upper limit
- * Return: nothing
+ * @lower_limt: lower limit
+ * @limt: upper limit
  */
-void partition(int *arr, size_t size, int lower_limit, int limit)
+void partition(int *arr, size_t size, int lower_limt, int limt)
 {
 	int pivot;
 
-	if (lower_limit < limit)
+	if (lower_limt < limt)
 	{
-		pivot = sort(arr, size, lower_limit,  limit);
-		partition(arr, size, lower_limit, pivot - 1);
-		partition(arr, size, pivot + 1, limit);
+		pivot = sort(arr, size, lower_limt,  limt);
+		partition(arr, size, lower_limt, pivot - 1);
+		partition(arr, size, pivot + 1, limt);
 	}
 }
 
 /**
  * sort - sorts an array according to quick sort algo
  * @arr: array
- * @lower_limit: lower limit
- * @limit: upper limit
+ * @lower_limt: lower limit
+ * @limt: upper limit
  * @size: size of array
  * Return: swap_index
  */
-int sort(int *arr, size_t size, int lower_limit, int limit)
+int sort(int *arr, size_t size, int lower_limt, int limt)
 {
-	int pivot = arr[limit], swap_index = lower_limit, i;
+	int pivot = arr[limt], swap_index = lower_limt, i;
 
-	for (i = lower_limit; i < limit; i++)
+	for (i = lower_limt; i < limt; i++)
 		if (arr[i] < pivot)
 		{
 			if (i != swap_index && arr[i] != arr[swap_index])
@@ -58,27 +56,27 @@ int sort(int *arr, size_t size, int lower_limit, int limit)
 			swap_index++;
 		}
 
-	if (limit != swap_index && arr[limit] != arr[swap_index])
-		swap(&arr[limit], &arr[swap_index], size, arr);
+	if (limt != swap_index && arr[limt] != arr[swap_index])
+		swap(&arr[limt], &arr[swap_index], size, arr);
 
 	return (swap_index);
 }
 
 /**
  * swap - swaps two elements in an array.
- * @a: first int to be swapped.
- * @b: second element to be swapped.
+ * @val1: first int to be swapped.
+ * @val2: second element to be swapped.
  * @arr: array.
  * @size: size of array.
  * Return: nothing.
  */
-void swap(int *a, int *b, size_t size, int *arr)
+void swap(int *val1, int *val2, size_t size, int *arr)
 {
 	int tmp;
 
-	tmp = *a;
-	*a = *b;
-	*b = tmp;
+	tmp = *val1;
+	*val1 = *val2;
+	*val2 = tmp;
 
 	print_array(arr, size);
 }
